@@ -51,6 +51,7 @@ def get_vals_from_column(sheet, colName):
     return [sheet.cell(row_index, col_index).value for row_index in xrange(1, sheet.nrows)]
 
 class Class(object):
+    name = "Select Class"
     def __init__(self):
         '''
         Constructor
@@ -62,7 +63,9 @@ class Class(object):
     
     @classmethod
     def createClass(cls, val):
-        if(val.lower() == Fighter.name):
+        if(val is None):
+            self = Class()
+        elif(val.lower() == Fighter.name):
             self = Fighter()
         elif(val.lower() == Mage.name):
             self = Mage()
@@ -90,17 +93,27 @@ class Class(object):
     def possibleLevels(self):
         return get_vals_from_column(self.worksheet, "Levels")
     
+    @property
+    def hpBonusPerLvl(self):
+        return 0
+        
 class Fighter(Class):
     name = "fighter"
     def __init__(self):
         super(Fighter, self).__init__()
         self._sheetName = "Fighter"
-
+    
+    def xpForLvl(self, lvl):
+        return int(value_from_key(self.worksheet, "Levels", "Next Lv XP", lvl))
+    
+    @property
+    def hpBonusPerLvl(self):
+        return 2
     
 class Mage(Class):
     name = "mage"
     def __init__(self):
-        super(Mage).__init__()
+        super(Mage, self).__init__()
         self._sheetName = "Mage"
 
 class Thief(Class):
@@ -115,4 +128,4 @@ class Cleric(Class):
         super(Cleric, self).__init__()
         self._sheetName = "Cleric"
 
-classes = [Fighter.name, Mage.name, Thief.name, Cleric.name]
+classes = [Class.name, Fighter.name, Mage.name, Thief.name, Cleric.name]

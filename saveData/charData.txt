@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<SaveData>
+	<Character alignment="Select Align" class="Select Class" name="Name Me" race="Select Race">
+		<Strength>
+			3
+		</Strength>
+		<Intelligence>
+			3
+		</Intelligence>
+		<Dexterity>
+			3
+		</Dexterity>
+		<Wisdom>
+			3
+		</Wisdom>
+		<Constitution>
+			3
+		</Constitution>
+		<Charisma>
+			3
+		</Charisma>
+		<Level>
+			1
+		</Level>
+		<Injury>
+			0
+		</Injury>
+	</Character>
+	<Inventory/>
+	<Leveling/>
+</SaveData>

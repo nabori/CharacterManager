@@ -34,6 +34,9 @@ class Race(object):
             self= Human()
         return self
     
+    def __str__(self):
+        return self.name
+    
 class Human(Race):
     name = "human"
     def __init__(self):
